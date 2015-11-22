@@ -48,11 +48,13 @@ namespace SPLCompiler {
                     throw new CompilerErrorException ($"Unexpected token \"{tokens[1]}\"", i + 1);
                 commandOfThisLine = Activator.CreateInstance (commandType) as ICommand;
             } else {
-                if (tokenCount > 2)
-                    throw new CompilerErrorException ($"Unexpected token \"{tokens[2]}\"", i + 1);
                 if (commandType.GetInterfaces ().Contains (typeof (IGotoCommand))) {
+                    if (tokenCount > 2)
+                        throw new CompilerErrorException ($"Unexpected token \"{tokens[2]}\"", i + 1);
                     commandOfThisLine = ProcessGotoCommands (labels, tokens, commandType);
                 } else {
+                    if (tokenCount > 3)
+                        throw new CompilerErrorException ($"Unexpected token \"{tokens[3]}\"", i + 1);
                     commandOfThisLine = ProcessParameterCommands (i, tokens, commandType);
                 }
 
@@ -62,16 +64,20 @@ namespace SPLCompiler {
         }
 
         private static ICommand ProcessParameterCommands (int i, string[] tokens, Type commandType) {
-            ICommand commandOfThisLine;
             int parseResult;
             bool parseSucceeded = int.TryParse (tokens[1], out parseResult);
             if (!parseSucceeded) {
                 throw new CompilerErrorException ($"Unexpected token \"{tokens[1]}\"", i + 1);
             } else {
-                commandOfThisLine = CreateInstance (commandType, new[] { typeof (int) }, new object[] { parseResult }) as ICommand;
+                if (tokens.Length > 2) {
+                    if (tokens[2] != "*") {
+                        throw new CompilerErrorException ($"Unexpected token \"{tokens[2]}\"", i + 1);
+                    } else {
+                        return CreateInstance (commandType, new[] { typeof (SplParameter) }, new object[] { new SplParameter (parseResult, true) }) as ICommand;
+                    }
+                }
+                return CreateInstance (commandType, new[] { typeof (SplParameter) }, new object[] { new SplParameter (parseResult, false) }) as ICommand;
             }
-
-            return commandOfThisLine;
         }
 
         private static ICommand ProcessGotoCommands (List<SplLabel> labels, string[] tokens, Type commandType) {

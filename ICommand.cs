@@ -10,7 +10,7 @@ namespace SPLCompiler.Commands {
     }
 
     public interface IParameterCommand : ICommand {
-        int Parameter {
+        SplParameter Parameter {
             get;
         }
     }

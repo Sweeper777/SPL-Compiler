@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="SPLCompiler.Commands.SplLabel">
-    <Position X="8.25" Y="0.75" Width="3" />
+    <Position X="7.25" Y="1.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAIAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SplLabel.cs</FileName>
@@ -130,6 +130,13 @@
       <FileName>SplCompiler.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Struct Name="SPLCompiler.SplParameter">
+    <Position X="13.75" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>SplParameter.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Interface Name="SPLCompiler.Commands.ICommand">
     <Position X="3.5" Y="0.75" Width="2.75" />
     <TypeIdentifier>
@@ -138,7 +145,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="SPLCompiler.Commands.IParameterCommand">
-    <Position X="6" Y="2.25" Width="2" />
+    <Position X="5" Y="2.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ICommand.cs</FileName>
@@ -152,7 +159,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="SPLCompiler.ISplRuntime">
-    <Position X="11.5" Y="0.5" Width="3" />
+    <Position X="10.5" Y="1.25" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAACIAAAAEAAAAgAAAgAAAAAAAAA=</HashCode>
       <FileName>ISplRuntime.cs</FileName>

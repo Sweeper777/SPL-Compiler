@@ -6,28 +6,47 @@ using System.Threading.Tasks;
 
 namespace SPLCompiler.Commands {
     public class IncCommand : IParameterCommand {
-        public int Parameter {
+        public SplParameter Parameter {
             get;
             private set;
         }
 
         public void Execute (ISplRuntime runtime) {
-            if (Parameter >= runtime.Memory.Length) {
+            if (Parameter.Value >= runtime.Memory.Length) {
                 runtime.ShowErrorMessage ("Error: Memory Index Out Of Bounds");
                 runtime.Stopped = true;
             }
 
-            if (runtime.Memory[Parameter] == null) {
+            if (runtime.Memory[Parameter.Value] == null) {
                 runtime.ShowErrorMessage ("Error: NULL Value In Memory");
                 runtime.Stopped = true;
             }
-            
-            int data = Convert.ToInt32 (runtime.Memory[Parameter]);
-            data++;
-            runtime.Memory[Parameter] = data;
+
+            int data;
+            if (Parameter.IsPointer) {
+                int pointTo = Convert.ToInt32 (runtime.Memory[Parameter.Value]);
+                if (pointTo >= runtime.Memory.Length) {
+                    runtime.ShowErrorMessage ("Error: Memory Index Out Of Bounds");
+                    runtime.Stopped = true;
+                    return;
+                }
+
+                if (runtime.Memory[pointTo] == null) {
+                    runtime.ShowErrorMessage ("Error: NULL Value In Memory");
+                    runtime.Stopped = true;
+                    return;
+                }
+                data = Convert.ToInt32 (runtime.Memory[pointTo]);
+                data++;
+                runtime.Memory[pointTo] = data;
+            } else {
+                data = Convert.ToInt32 (runtime.Memory[Parameter.Value]);
+                data++;
+                runtime.Memory[Parameter.Value] = data;
+            }
         }
 
-        public IncCommand (int param) {
+        public IncCommand (SplParameter param) {
             Parameter = param;
         }
     }

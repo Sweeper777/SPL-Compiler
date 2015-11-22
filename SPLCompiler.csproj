@@ -63,6 +63,7 @@
     <Compile Include="SplCompiler.cs" />
     <Compile Include="SplLabel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplParameter.cs" />
     <Compile Include="SplProgram.cs" />
     <Compile Include="SubCommand.cs" />
     <Compile Include="TakeCommand.cs" />
