@@ -10,7 +10,11 @@ namespace SPLCompiler.Commands {
             if (runtime.Current == null) {
                 runtime.ShowErrorMessage ("Error: NULL Value Used");
             }
-            runtime.Output.Write (runtime.Current);
+            if (runtime.Current is int) {
+                runtime.Output.Write (runtime.Current + " ");
+            } else {
+                runtime.Output.Write (runtime.Current);
+            }
         }
     }
 }

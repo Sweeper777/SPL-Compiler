@@ -49,7 +49,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SPLCompiler.Commands.SubCommand">
-    <Position X="3.5" Y="6" Width="2.75" />
+    <Position X="3.5" Y="6" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubCommand.cs</FileName>
@@ -57,7 +57,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SPLCompiler.Commands.IncCommand">
-    <Position X="6.5" Y="6" Width="2.75" />
+    <Position X="6.75" Y="6" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IncCommand.cs</FileName>
@@ -65,7 +65,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SPLCompiler.Commands.DecCommand">
-    <Position X="9.5" Y="6" Width="2.75" />
+    <Position X="10.75" Y="6" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DecCommand.cs</FileName>
@@ -73,7 +73,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SPLCompiler.Commands.GotoCommand">
-    <Position X="4" Y="8" Width="1.5" />
+    <Position X="4" Y="8" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAAAQAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GotoCommand.cs</FileName>
@@ -95,17 +95,39 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SPLCompiler.SplProgram">
-    <Position X="0.5" Y="12.75" Width="3" />
+    <Position X="0.5" Y="12.75" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAAAAACAI=</HashCode>
       <FileName>SplProgram.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SPLCompiler.CompilerUtility">
-    <Position X="3.75" Y="12.75" Width="4" />
+    <Position X="4.25" Y="12.75" Width="4" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CompilerUtility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SPLCompiler.CompilerErrorException">
+    <Position X="9.5" Y="9.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CompilerErrorException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SPLCompiler.Commands.Comment">
+    <Position X="7.75" Y="8" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Comment.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SPLCompiler.SplCompiler">
+    <Position X="0.5" Y="15.25" Width="9.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQBAAAAAAAAAAAABAAAAAAgAAAAAAABAAAAAAKAEA=</HashCode>
+      <FileName>SplCompiler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="SPLCompiler.Commands.ICommand">
@@ -118,7 +140,7 @@
   <Interface Name="SPLCompiler.Commands.IParameterCommand">
     <Position X="6" Y="2.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ICommand.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -136,12 +158,5 @@
       <FileName>ISplRuntime.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Delegate Name="SPLCompiler.NextCommandEventHandler">
-    <Position X="0.5" Y="0.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ISplRuntime.cs</FileName>
-    </TypeIdentifier>
-  </Delegate>
   <Font Name="Microsoft YaHei UI" Size="9" />
 </ClassDiagram>

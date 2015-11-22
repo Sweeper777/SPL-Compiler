@@ -20,7 +20,7 @@ namespace SPLCompiler {
         public ICommand CurrentCommand => Commands[CurrentLineNumber];
 
         public void Run (ISplRuntime runtime) {
-            runtime.Stopped = true;
+            runtime.Stopped = false;
             while (!runtime.Stopped) {
                 StepOver (runtime);
             }

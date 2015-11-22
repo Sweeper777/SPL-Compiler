@@ -33,9 +33,8 @@ namespace SPLCompiler.Commands {
             runtime.Current = current - data;
         }
 
-        public SubCommand (int param, bool isPointer) {
+        public SubCommand (int param) {
             Parameter = param;
-            IsPointer = isPointer;
         }
     }
 }

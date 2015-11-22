@@ -21,7 +21,7 @@ namespace SPLCompiler {
             RegisterCommentsAndLabels (commands, labels, commentLines, labelLines);
 
             for (int i = 0 ; i < lines.Length ; i++) {
-                if (labelLines.Contains (i) || commentLines.Contains (i)) {
+                if (labelLines.Contains (i + 1) || commentLines.Contains (i)) {
                     continue;
                 }
                 string line = lines[i];
@@ -42,15 +42,15 @@ namespace SPLCompiler {
 
         private static ICommand ProcessCommand (List<SplLabel> labels, int i, string[] tokens, int tokenCount, Type commandType) {
             ICommand commandOfThisLine;
-            if (!commandType.IsSubclassOf (typeof (IParameterCommand)) &&
-      !commandType.IsSubclassOf (typeof (IGotoCommand))) {
+            if (!commandType.GetInterfaces().Contains (typeof (IParameterCommand)) &&
+      !commandType.GetInterfaces ().Contains (typeof (IGotoCommand))) {
                 if (tokenCount > 1)
                     throw new CompilerErrorException ($"Unexpected token \"{tokens[1]}\"", i + 1);
                 commandOfThisLine = Activator.CreateInstance (commandType) as ICommand;
             } else {
                 if (tokenCount > 2)
                     throw new CompilerErrorException ($"Unexpected token \"{tokens[2]}\"", i + 1);
-                if (commandType.IsSubclassOf (typeof (IGotoCommand))) {
+                if (commandType.GetInterfaces ().Contains (typeof (IGotoCommand))) {
                     commandOfThisLine = ProcessGotoCommands (labels, tokens, commandType);
                 } else {
                     commandOfThisLine = ProcessParameterCommands (i, tokens, commandType);
@@ -88,11 +88,11 @@ namespace SPLCompiler {
 
         private static void RegisterCommentsAndLabels (ICommand[] commands, List<SplLabel> labels, List<int> commentLines, IEnumerable<int> labelLines) {
             for (int i = 0 ; i < labelLines.Count () ; i++) {
-                commands[labelLines.ElementAt (i)] = labels[i];
+                commands[labelLines.ElementAt (i) - 1] = labels[i];
             }
 
             for (int i = 0 ; i < commentLines.Count ; i++) {
-                commands[commentLines[i]] = new Comment ();
+                commands[commentLines[i] - 1] = new Comment ();
             }
         }
 

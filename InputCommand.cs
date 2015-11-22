@@ -32,7 +32,9 @@ namespace SPLCompiler.Commands {
             if (char.IsLetter (stuffRead)) {
                 c = (char)runtime.Input.Read ();
                 return true;
-            } else {
+            } /*else if (stuffRead == 65535) {
+
+            }*/ else {
                 c = '\0';
                 return false;
             }
@@ -52,7 +54,8 @@ namespace SPLCompiler.Commands {
                     stuffRead = (char)runtime.Input.Read ();
                     numberString += stuffRead;
                 }
-                i = Convert.ToInt32 (numberString);
+                
+                i = Convert.ToInt32 (numberString.Replace(unchecked((char)-1), ' ').Trim());
                 return true;
             } else {
                 i = 0;

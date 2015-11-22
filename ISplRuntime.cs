@@ -31,6 +31,4 @@ namespace SPLCompiler {
 
         void ShowErrorMessage (string error);
     }
-
-    public delegate void NextCommandEventHandler (int lineNumber);
 }
