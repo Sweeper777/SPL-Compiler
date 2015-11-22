@@ -39,10 +39,12 @@ namespace SPLCompiler.Commands {
                 data = Convert.ToInt32 (runtime.Memory[pointTo]);
                 data--;
                 runtime.Memory[pointTo] = data;
+                runtime.Current = data;
             } else {
                 data = Convert.ToInt32 (runtime.Memory[Parameter.Value]);
                 data--;
                 runtime.Memory[Parameter.Value] = data;
+                runtime.Current = data;
             }
         }
 

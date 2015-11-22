@@ -19,7 +19,8 @@ namespace SPLCompiler {
                 { "DEC", typeof(DecCommand) },
                 { "GOTO_IF_0", typeof(GotoIf0Command) },
                 { "GOTO", typeof(GotoCommand) },
-                { "GOTO_IF_NEG", typeof(GotoIfNegCommand) }
+                { "GOTO_IF_NEG", typeof(GotoIfNegCommand) },
+                { "SET", typeof(SetCommand) }
             };
 
         public static Dictionary<string, Type> CommandTypeMap {

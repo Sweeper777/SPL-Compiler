@@ -43,7 +43,8 @@ namespace SPLCompiler {
         private static ICommand ProcessCommand (List<SplLabel> labels, int i, string[] tokens, int tokenCount, Type commandType) {
             ICommand commandOfThisLine;
             if (!commandType.GetInterfaces().Contains (typeof (IParameterCommand)) &&
-      !commandType.GetInterfaces ().Contains (typeof (IGotoCommand))) {
+      !commandType.GetInterfaces ().Contains (typeof (IGotoCommand)) &&
+      commandType != typeof(SetCommand)) {
                 if (tokenCount > 1)
                     throw new CompilerErrorException ($"Unexpected token \"{tokens[1]}\"", i + 1);
                 commandOfThisLine = Activator.CreateInstance (commandType) as ICommand;
@@ -71,6 +72,16 @@ namespace SPLCompiler {
             } else {
                 if (tokens.Length > 2) {
                     if (tokens[2] != "*") {
+                        if (commandType == typeof (SetCommand)) {
+                            int valueToSet;
+                            parseSucceeded = int.TryParse (tokens[2], out valueToSet);
+                            if (!parseSucceeded && tokens[2].Length > 1) {
+                                throw new CompilerErrorException ($"Unexpected token \"{tokens[2]}\"", i + 1);
+                            }
+
+                            return CreateInstance (commandType, new Type[] { typeof (int), typeof (int) },
+                                new object[] { parseResult, parseSucceeded ? valueToSet : tokens[2].Single () }) as ICommand;
+                        }
                         throw new CompilerErrorException ($"Unexpected token \"{tokens[2]}\"", i + 1);
                     } else {
                         return CreateInstance (commandType, new[] { typeof (SplParameter) }, new object[] { new SplParameter (parseResult, true) }) as ICommand;

@@ -60,6 +60,7 @@
     <Compile Include="ISplRuntime.cs" />
     <Compile Include="OutputCommand.cs" />
     <Compile Include="PutCommand.cs" />
+    <Compile Include="SetCommand.cs" />
     <Compile Include="SplCompiler.cs" />
     <Compile Include="SplLabel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
